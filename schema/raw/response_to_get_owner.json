@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GetOwnerResponse",
+  "description": "Response from get_owner",
+  "type": "object",
+  "required": [
+    "owner_response"
+  ],
+  "properties": {
+    "owner_response": {
+      "description": "current OWNER state",
+      "allOf": [
+        {
+          "$ref": "#/definitions/OwnerResponse"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "OwnerResponse": {
+      "description": "Returned from Owner.query()",
+      "type": "object",
+      "required": [
+        "owner"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
