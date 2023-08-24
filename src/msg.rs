@@ -47,6 +47,12 @@ pub enum ExecuteMsg {
         /// }
         new_vec_denom_units: Vec<DenomUnit>,
     },
+    /// Fixed string
+    ExecuteMessage,
+    /// Empty message do nothing
+    Empty {},
+    /// String message do nothing
+    String(String),
     /// Update OWNER item.
     UpdateOwner(OwnerUpdate),
 }
@@ -63,6 +69,12 @@ pub enum QueryMsg {
     /// GetObject returns the input directly
     #[returns(GetObjectResponse)]
     GetObject { object: Object },
+    /// Fix String
+    #[returns(ConstantStringResponse)]
+    QueryMessage,
+    /// String message
+    #[returns(GetStringResponse)]
+    GetString(String),
 }
 
 // We define a custom struct for each query response
@@ -86,6 +98,13 @@ pub struct GetObjectResponse {
     /// object result
     pub object: Object,
 }
+
+#[cw_serde]
+pub struct ConstantStringResponse;
+
+#[cw_serde]
+/// Response from get_string.
+pub struct GetStringResponse(pub String);
 
 #[cw_serde]
 pub struct MigrateMsg {

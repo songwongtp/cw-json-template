@@ -28,6 +28,7 @@ pub fn execute(
             new_vec_denom_units,
         } => execute::set_vec_denom_units(deps, new_vec_denom_units),
         ExecuteMsg::UpdateOwner(update) => execute::update_owner(deps, info, update),
+        _ => Ok(Response::new()),
     }
 }
 

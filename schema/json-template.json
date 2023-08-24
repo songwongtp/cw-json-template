@@ -164,6 +164,40 @@
         "additionalProperties": false
       },
       {
+        "description": "Fixed string",
+        "type": "string",
+        "enum": [
+          "execute_message"
+        ]
+      },
+      {
+        "description": "Empty message do nothing",
+        "type": "object",
+        "required": [
+          "empty"
+        ],
+        "properties": {
+          "empty": {
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      {
+        "description": "String message do nothing",
+        "type": "object",
+        "required": [
+          "string"
+        ],
+        "properties": {
+          "string": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      {
         "description": "Update OWNER item.",
         "type": "object",
         "required": [
@@ -314,6 +348,26 @@
               }
             },
             "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      {
+        "description": "Fix String",
+        "type": "string",
+        "enum": [
+          "query_message"
+        ]
+      },
+      {
+        "description": "String message",
+        "type": "object",
+        "required": [
+          "get_string"
+        ],
+        "properties": {
+          "get_string": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -1092,6 +1146,17 @@
           "type": "string"
         }
       }
+    },
+    "get_string": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "GetStringResponse",
+      "description": "Response from get_string.",
+      "type": "string"
+    },
+    "query_message": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ConstantStringResponse",
+      "type": "null"
     }
   }
 }

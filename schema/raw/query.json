@@ -51,6 +51,26 @@
         }
       },
       "additionalProperties": false
+    },
+    {
+      "description": "Fix String",
+      "type": "string",
+      "enum": [
+        "query_message"
+      ]
+    },
+    {
+      "description": "String message",
+      "type": "object",
+      "required": [
+        "get_string"
+      ],
+      "properties": {
+        "get_string": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
     }
   ],
   "definitions": {

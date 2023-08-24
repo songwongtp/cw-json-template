@@ -135,6 +135,40 @@
       "additionalProperties": false
     },
     {
+      "description": "Fixed string",
+      "type": "string",
+      "enum": [
+        "execute_message"
+      ]
+    },
+    {
+      "description": "Empty message do nothing",
+      "type": "object",
+      "required": [
+        "empty"
+      ],
+      "properties": {
+        "empty": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "description": "String message do nothing",
+      "type": "object",
+      "required": [
+        "string"
+      ],
+      "properties": {
+        "string": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
       "description": "Update OWNER item.",
       "type": "object",
       "required": [

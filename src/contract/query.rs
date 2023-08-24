@@ -2,7 +2,7 @@
 use cosmwasm_std::entry_point;
 use cosmwasm_std::{to_binary, Binary, Deps, Env, StdResult};
 
-use crate::msg::{GetStateResponse, QueryMsg};
+use crate::msg::QueryMsg;
 use crate::state::{OWNER, STATE};
 
 #[cfg_attr(not(feature = "library"), entry_point)]
@@ -11,12 +11,17 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
         QueryMsg::GetOwner {} => to_binary(&query::owner(deps)?),
         QueryMsg::GetState {} => to_binary(&query::state(deps)?),
         QueryMsg::GetObject { object } => to_binary(&query::object(object)?),
+        QueryMsg::QueryMessage => to_binary(&query::constant()?),
+        QueryMsg::GetString(string) => to_binary(&query::string(string)?),
     }
 }
 
 pub mod query {
     use crate::{
-        msg::{GetObjectResponse, GetOwnerResponse},
+        msg::{
+            ConstantStringResponse, GetObjectResponse, GetOwnerResponse, GetStateResponse,
+            GetStringResponse,
+        },
         types::object::Object,
     };
 
@@ -36,5 +41,13 @@ pub mod query {
 
     pub fn object(object: Object) -> StdResult<GetObjectResponse> {
         Ok(GetObjectResponse { object })
+    }
+
+    pub fn constant() -> StdResult<ConstantStringResponse> {
+        Ok(ConstantStringResponse)
+    }
+
+    pub fn string(string: String) -> StdResult<GetStringResponse> {
+        Ok(GetStringResponse(string))
     }
 }
