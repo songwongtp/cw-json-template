@@ -11,16 +11,23 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
         QueryMsg::GetOwner {} => to_binary(&query::owner(deps)?),
         QueryMsg::GetState {} => to_binary(&query::state(deps)?),
         QueryMsg::GetObject { object } => to_binary(&query::object(object)?),
-        QueryMsg::QueryMessage => to_binary(&query::constant()?),
+        QueryMsg::GetDenomUnit(denom_unit) => to_binary(&query::denom_unit(denom_unit)?),
         QueryMsg::GetString(string) => to_binary(&query::string(string)?),
+        QueryMsg::GetNumber(number) => to_binary(&query::number(number)?),
+        QueryMsg::GetBool(bool) => to_binary(&query::bool(bool)?),
+        QueryMsg::QueryMessage1 => to_binary(&query::query_message_1()?),
+        QueryMsg::QueryMessage2 => to_binary(&query::query_message_2()?),
     }
 }
 
 pub mod query {
+    use cosmwasm_std::DenomUnit;
+
     use crate::{
         msg::{
-            ConstantStringResponse, GetObjectResponse, GetOwnerResponse, GetStateResponse,
-            GetStringResponse,
+            GetBoolResponse, GetDenomUnitResponse, GetNumberResponse, GetObjectResponse,
+            GetOwnerResponse, GetStateResponse, GetStringResponse, QueryMessage1Response,
+            QueryMessage2Response,
         },
         types::object::Object,
     };
@@ -43,11 +50,27 @@ pub mod query {
         Ok(GetObjectResponse { object })
     }
 
-    pub fn constant() -> StdResult<ConstantStringResponse> {
-        Ok(ConstantStringResponse)
+    pub fn denom_unit(denom_unit: DenomUnit) -> StdResult<GetDenomUnitResponse> {
+        Ok(GetDenomUnitResponse(denom_unit))
     }
 
     pub fn string(string: String) -> StdResult<GetStringResponse> {
         Ok(GetStringResponse(string))
+    }
+
+    pub fn number(number: u32) -> StdResult<GetNumberResponse> {
+        Ok(GetNumberResponse(number))
+    }
+
+    pub fn bool(bool: bool) -> StdResult<GetBoolResponse> {
+        Ok(GetBoolResponse(bool))
+    }
+
+    pub fn query_message_1() -> StdResult<QueryMessage1Response> {
+        Ok(QueryMessage1Response)
+    }
+
+    pub fn query_message_2() -> StdResult<QueryMessage2Response> {
+        Ok(QueryMessage2Response {})
     }
 }

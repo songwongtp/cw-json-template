@@ -69,12 +69,24 @@ pub enum QueryMsg {
     /// GetObject returns the input directly
     #[returns(GetObjectResponse)]
     GetObject { object: Object },
-    /// Fix String
-    #[returns(ConstantStringResponse)]
-    QueryMessage,
+    /// GetDenomUnit message
+    #[returns(GetDenomUnitResponse)]
+    GetDenomUnit(DenomUnit),
     /// String message
     #[returns(GetStringResponse)]
     GetString(String),
+    /// Number message
+    #[returns(GetNumberResponse)]
+    GetNumber(u32),
+    /// Bool message
+    #[returns(GetBoolResponse)]
+    GetBool(bool),
+    /// Fix String Option 1
+    #[returns(QueryMessage1Response)]
+    QueryMessage1,
+    /// Fix String Option 2
+    #[returns(QueryMessage2Response)]
+    QueryMessage2,
 }
 
 // We define a custom struct for each query response
@@ -100,11 +112,28 @@ pub struct GetObjectResponse {
 }
 
 #[cw_serde]
-pub struct ConstantStringResponse;
+/// Response from query_message_1.
+pub struct QueryMessage1Response;
+
+#[cw_serde]
+/// Response from query_message_2
+pub struct QueryMessage2Response {}
+
+#[cw_serde]
+/// Response from get_denom_unit.
+pub struct GetDenomUnitResponse(pub DenomUnit);
 
 #[cw_serde]
 /// Response from get_string.
 pub struct GetStringResponse(pub String);
+
+#[cw_serde]
+/// Response from get_number.
+pub struct GetNumberResponse(pub u32);
+
+#[cw_serde]
+/// Response from get_bool.
+pub struct GetBoolResponse(pub bool);
 
 #[cw_serde]
 pub struct MigrateMsg {

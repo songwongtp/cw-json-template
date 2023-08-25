@@ -1,1 +1,1 @@
-9f06c887b911713d8580a4731d6986c8735e62db7da24cdf8d649f9914e18b24  /target/wasm32-unknown-unknown/release/json_template.wasm
+341cf78e2a2ffe28df442ad3b8362967d22a91a4db4500c6aa6173621185ff94  /target/wasm32-unknown-unknown/release/json_template.wasm

@@ -206,6 +206,40 @@
             }
           },
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "opt_bool"
+          ],
+          "properties": {
+            "opt_bool": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "empty"
+          ],
+          "properties": {
+            "empty": {
+              "type": "object",
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
         }
       ]
     }

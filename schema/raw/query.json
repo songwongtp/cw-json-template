@@ -53,11 +53,17 @@
       "additionalProperties": false
     },
     {
-      "description": "Fix String",
-      "type": "string",
-      "enum": [
-        "query_message"
-      ]
+      "description": "GetDenomUnit message",
+      "type": "object",
+      "required": [
+        "get_denom_unit"
+      ],
+      "properties": {
+        "get_denom_unit": {
+          "$ref": "#/definitions/DenomUnit"
+        }
+      },
+      "additionalProperties": false
     },
     {
       "description": "String message",
@@ -71,6 +77,48 @@
         }
       },
       "additionalProperties": false
+    },
+    {
+      "description": "Number message",
+      "type": "object",
+      "required": [
+        "get_number"
+      ],
+      "properties": {
+        "get_number": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "description": "Bool message",
+      "type": "object",
+      "required": [
+        "get_bool"
+      ],
+      "properties": {
+        "get_bool": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "description": "Fix String Option 1",
+      "type": "string",
+      "enum": [
+        "query_message1"
+      ]
+    },
+    {
+      "description": "Fix String Option 2",
+      "type": "string",
+      "enum": [
+        "query_message2"
+      ]
     }
   ],
   "definitions": {
@@ -259,6 +307,40 @@
                   "$ref": "#/definitions/Binary"
                 }
               },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "opt_bool"
+          ],
+          "properties": {
+            "opt_bool": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "empty"
+          ],
+          "properties": {
+            "empty": {
+              "type": "object",
               "additionalProperties": false
             }
           },

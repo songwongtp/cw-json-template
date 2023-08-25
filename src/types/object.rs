@@ -12,4 +12,6 @@ pub enum Object {
     DenomUnit { value: DenomUnit },
     OptVecDenomUnit { value: Option<Vec<DenomUnit>> },
     VecU8 { value: Binary },
+    OptBool { value: Option<bool> },
+    Empty {},
 }
