@@ -1,1 +1,1 @@
-2fa4c8ea88d8c1b9d6bc75a72d332c1a9564bb61795148de74053c32be808bf4  json_template.wasm
+3171b5ec5724c63edc6e9eef3f5839ad71707c0a9f7ba2110d7b9e37a2be67a5  json_template.wasm
